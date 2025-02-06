@@ -99,50 +99,88 @@ DeviceNetworkEvents
 
 ## Chronological Event Timeline 
 
-### 1. File Download - TOR Installer
+### **1️⃣ Tor Browser Download**
+- **🕒 Timestamp:** `2025-02-05T16:36:20 UTC`
+- **📂 Event Type:** File Download
+- **💻 Device:** `threat-hunt-lab`
+- **👤 User:** `employee`
+- **🔍 Details:**
+  - The file **"tor-browser-windows-x86_64-portable-14.0.5.exe"** was **downloaded** into the **Downloads** folder.
+  - This indicates **intentional** acquisition of the Tor browser.
 
-- **Timestamp:** `2024-11-08T22:14:48.6065231Z`
-- **Event:** The user "employee" downloaded a file named `tor-browser-windows-x86_64-portable-14.0.1.exe` to the Downloads folder.
-- **Action:** File download detected.
-- **File Path:** `C:\Users\employee\Downloads\tor-browser-windows-x86_64-portable-14.0.1.exe`
+---
 
-### 2. Process Execution - TOR Browser Installation
+### **2️⃣ Tor Browser Installation**
+- **🕒 Timestamp:** `2025-02-05T16:38:29 UTC`
+- **📂 Event Type:** Process Execution (Installation)
+- **💻 Device:** `threat-hunt-lab`
+- **👤 User:** `employee`
+- **🔍 Details:**
+  - The user executed **"tor-browser-windows-x86_64-portable-14.0.5.exe"** with the **"/S"** flag (**silent installation**).
+  - **File Hash (SHA256):** `c5bb78b482300188ab228ed36251ab1ef208cc48a0a50864f2db7454debfc04e`
+  - The installation was performed inside the **Downloads** folder.
 
-- **Timestamp:** `2024-11-08T22:16:47.4484567Z`
-- **Event:** The user "employee" executed the file `tor-browser-windows-x86_64-portable-14.0.1.exe` in silent mode, initiating a background installation of the TOR Browser.
-- **Action:** Process creation detected.
-- **Command:** `tor-browser-windows-x86_64-portable-14.0.1.exe /S`
-- **File Path:** `C:\Users\employee\Downloads\tor-browser-windows-x86_64-portable-14.0.1.exe`
+---
 
-### 3. Process Execution - TOR Browser Launch
+### **3️⃣ Creation of Tor Browser Files**
+- **🕒 Timestamp:** `2025-02-05T16:39:00 UTC`
+- **📂 Event Type:** File Creation
+- **💻 Device:** `threat-hunt-lab`
+- **👤 User:** `employee`
+- **🔍 Details:**
+  - Several **Tor-related configuration files** were created:
+    - `Tor-Launcher.txt`
+    - `Torbutton.txt`
+    - `Tor.txt`
+  - These files were stored inside:  
+    **`C:\Users\employee\Desktop\Tor Browser\Browser\`**
+  - Indicates **successful installation and configuration** of Tor.
 
-- **Timestamp:** `2024-11-08T22:17:21.6357935Z`
-- **Event:** User "employee" opened the TOR browser. Subsequent processes associated with TOR browser, such as `firefox.exe` and `tor.exe`, were also created, indicating that the browser launched successfully.
-- **Action:** Process creation of TOR browser-related executables detected.
-- **File Path:** `C:\Users\employee\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe`
+---
 
-### 4. Network Connection - TOR Network
+### **4️⃣ Tor Browser Execution**
+- **🕒 Timestamp:** `2025-02-05T16:39:29 UTC`
+- **📂 Event Type:** Process Execution
+- **💻 Device:** `threat-hunt-lab`
+- **👤 User:** `employee`
+- **🔍 Details:**
+  - The user **launched** `tor.exe`, initiating the **Tor browser**.
+  - Multiple **firefox.exe** processes (Tor-based) were created, confirming active usage.
 
-- **Timestamp:** `2024-11-08T22:18:01.1246358Z`
-- **Event:** A network connection to IP `176.198.159.33` on port `9001` by user "employee" was established using `tor.exe`, confirming TOR browser network activity.
-- **Action:** Connection success.
-- **Process:** `tor.exe`
-- **File Path:** `c:\users\employee\desktop\tor browser\browser\torbrowser\tor\tor.exe`
+---
 
-### 5. Additional Network Connections - TOR Browser Activity
+### **5️⃣ Establishing Tor Network Connections**
+- **🕒 Timestamp:** `2025-02-05T16:39:55 - 16:40:06 UTC`
+- **📂 Event Type:** Network Connection
+- **💻 Device:** `threat-hunt-lab`
+- **👤 User:** `employee`
+- **🔍 Details:**
+  - The **tor.exe** process established connections to known **Tor relay nodes**:
+    - **88.99.142.177:9001**
+    - **176.198.159.33:9001**
+    - **127.0.0.1:9150** (local proxy connection)
+    - **94.23.88.117:443** (HTTPS)
+  - The browser accessed **Tor-specific URLs**, such as:
+    - `https://www.xmh4xtbgfzpy3em.com`
+    - `https://www.mhvt.com`
+    - `https://www.wfb4ikugupgn4.com`
+  - Confirms **successful Tor network access**.
 
-- **Timestamps:**
-  - `2024-11-08T22:18:08Z` - Connected to `194.164.169.85` on port `443`.
-  - `2024-11-08T22:18:16Z` - Local connection to `127.0.0.1` on port `9150`.
-- **Event:** Additional TOR network connections were established, indicating ongoing activity by user "employee" through the TOR browser.
-- **Action:** Multiple successful connections detected.
+---
 
-### 6. File Creation - TOR Shopping List
-
-- **Timestamp:** `2024-11-08T22:27:19.7259964Z`
-- **Event:** The user "employee" created a file named `tor-shopping-list.txt` on the desktop, potentially indicating a list or notes related to their TOR browser activities.
-- **Action:** File creation detected.
-- **File Path:** `C:\Users\employee\Desktop\tor-shopping-list.txt`
+### **6️⃣ Suspicious File Creation: "tor-shopping-list.txt"**
+- **🕒 Timestamp:** `2025-02-05T16:57:08 UTC`
+- **📂 Event Type:** File Created
+- **💻 Device:** `threat-hunt-lab`
+- **👤 User:** `employee`
+- **🔍 Details:**
+  - A file named **"tor-shopping-list.txt"** was created inside:
+    - **`C:\Users\employee\Documents\`**
+  - This file could contain **details related to Tor activity**, such as:
+    - **Visited sites**
+    - **Credentials**
+    - **Planned actions**
+  - **Further analysis recommended** to determine its content.
 
 ---
 
